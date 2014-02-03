@@ -18,7 +18,6 @@ module Multicash
         @total_ammount += (transfer.ammount.to_f)
         @currency ||= transfer.currency
         @ordering_bae ||= transfer.ordering_bae
-        transfer.reference_counter += 1
       else
         errors.add(:transfer, transfer.errors.full_messages)
       end
@@ -50,8 +49,11 @@ module Multicash
 
     def body
       lines = []
-      transfers.reverse.each do |transfer|
-        lines << transfer.generate
+      transfers.reverse.each_with_index do |transfer|
+        if transfer.valid?
+          transfer.reference_counter += 1
+          lines << transfer.generate
+        end
       end
 
       lines.join("\x0C")

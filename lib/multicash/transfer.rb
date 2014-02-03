@@ -18,7 +18,7 @@ module Multicash
       @payment_system = attributes[:payment_system]
       @errors = ActiveModel::Errors.new(self)
       @today = Time.now.strftime('%y%m%d')
-      @reference_counter = 1
+      @reference_counter = 0
     end
 
     validate :validate_associated
