@@ -4,7 +4,7 @@ describe "Multicash::PaymentOrder" do
   let(:ordering_account) { Multicash::Account.new({ name: 'Име на наредителя',
     city: 'Град на наредителя',
     address: 'Адрес на наредителя',
-    iban: 'BG11UBBS10021041615812',
+    iban: 'BG84UNCR70001521287097',
     bank_name: 'Банка на наредителя'})
   }
 
