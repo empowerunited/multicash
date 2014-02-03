@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Yordanov"]
-  s.date = "2014-01-31"
+  s.date = "2014-02-03"
   s.description = "Generate payment order under the multicash spec"
   s.email = "anton.yordnaov@gmail.com"
   s.extra_rdoc_files = [
@@ -19,12 +19,34 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/multicash.rb"
+    "lib/multicash.rb",
+    "lib/multicash/account.rb",
+    "lib/multicash/ammount.rb",
+    "lib/multicash/credit_transfer.rb",
+    "lib/multicash/labels/credit_transfer.rb",
+    "lib/multicash/labels/payment_order.rb",
+    "lib/multicash/payment.rb",
+    "lib/multicash/payment_order.rb",
+    "lib/multicash/transfer.rb",
+    "lib/multicash/transfer_labels_builder.rb",
+    "lib/multicash/utils.rb",
+    "multicash.gemspec",
+    "spec/account_spec.rb",
+    "spec/ammount_spec.rb",
+    "spec/credit_transfer_spec.rb",
+    "spec/fixtures/transfer.yml",
+    "spec/labels/credit_transfer_spec.rb",
+    "spec/payment_order_spec.rb",
+    "spec/payment_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/transfer_spec.rb"
   ]
   s.homepage = "http://github.com/anotin-yordanov/multicash"
   s.licenses = ["MIT"]
