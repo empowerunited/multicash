@@ -1,0 +1,10 @@
+transfer:
+  payment_sysytem: BISERA
+  ordering_name: Company name
+  ordering_iban: BG11UNCR70001617678011
+  destination_name: Ivan Ivanov
+  destination_iban: BG11UBBS10021041615811
+  payment_amount: 5000.00
+  currency: BGN
+  payment_details1: Big prize
+  charges: SHA

@@ -17,18 +17,19 @@ Jeweler::Tasks.new do |gem|
   gem.name = "multicash"
   gem.homepage = "http://github.com/anotin-yordanov/multicash"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "anton@empowerunited.com"
+  gem.summary = %Q{Generate payment order under the multicash spec}
+  gem.description = %Q{Generate payment order under the multicash spec}
+  gem.email = "anton.yordnaov@gmail.com"
   gem.authors = ["Anton Yordanov"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
 require 'rake/testtask'
+
 Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.libs << 'lib' << 'rspec'
+  test.pattern = 'spec/**/*_spec.rb'
   test.verbose = true
 end
 
