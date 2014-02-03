@@ -13,6 +13,8 @@ module Multicash
     end
 
     def generate
+      return self.errors.full_messages unless self.valid
+
      "#{self.header}#{self.body}"
     end
 
