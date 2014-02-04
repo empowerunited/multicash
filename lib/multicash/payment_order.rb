@@ -1,11 +1,15 @@
 module Multicash
   class PaymentOrder
+    extend  ActiveModel::Naming
+    include ActiveModel::Validations
+
     attr_accessor :reference,  :transfers_number
     attr_reader :transfers, :total_ammount, :currency, :ordering_bae, :date, :errors
 
     def initialize
       @currency = nil
       @date = Time.now.strftime('%y%m%d')
+      @errors = ActiveModel::Errors.new(self)
       @errors = []
       @ordering_bae = nil
       @transfers = []
@@ -19,7 +23,7 @@ module Multicash
         @currency ||= transfer.currency
         @ordering_bae ||= transfer.ordering_bae
       else
-        errors.add(:transfer, transfer.errors.full_messages)
+        errors.add("#{transfer.id}", transfer.errors.full_messages)
       end
     end
 
