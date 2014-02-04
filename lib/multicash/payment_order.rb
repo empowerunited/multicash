@@ -60,6 +60,8 @@ module Multicash
     end
 
     def generate
+      return false if transfers.blank?
+
       "#{header}#{body}"
     end
 
