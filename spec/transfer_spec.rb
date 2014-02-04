@@ -19,7 +19,7 @@ describe "Multicash::Transfer" do
   let(:payment) { Multicash::Payment.new( ammount: ammount, details: 'Details', charges: 'SHA') }
 
   context "validations" do
-    it "valid on valid initilization objects" do
+    it "valid on valid initilization attributes" do
       expect(Multicash::Transfer.new( ordering_account: ordering_account,
         destination_account: destination_account,
         payment: payment,
@@ -27,7 +27,7 @@ describe "Multicash::Transfer" do
       ).to be_valid
     end
 
-    it "invalid on invalid ordering_account" do
+    it "invalid on invalid ordering_account attribute" do
       ordering_account.name = ''
 
       expect(Multicash::Transfer.new(ordering_account: ordering_account,
@@ -37,7 +37,7 @@ describe "Multicash::Transfer" do
       ).to_not be_valid
     end
 
-    it "invalid on invalid destination_account" do
+    it "invalid on invalid destination_account attribute" do
       destination_account.name = ''
 
       expect(Multicash::Transfer.new(ordering_account: ordering_account,
@@ -47,7 +47,7 @@ describe "Multicash::Transfer" do
       ).to_not be_valid
     end
 
-    it "invalid on invalid payment" do
+    it "invalid on invalid payment attribute" do
       payment.ammount.value = 'fffff'
 
       expect(Multicash::Transfer.new(ordering_account: ordering_account,
