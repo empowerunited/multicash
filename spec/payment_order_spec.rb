@@ -26,12 +26,17 @@ describe "Multicash::PaymentOrder" do
   context "generate" do
     subject { Multicash::PaymentOrder.new }
 
+    specify "increment transfer reference_counter" do
+      subject << transfer
+      expect(transfer.reference_counter).to eq(1)
+      subject << transfer
+      expect(transfer.reference_counter).to eq(2)
+    end
+
     specify "save to file" do
       subject << transfer
       subject << transfer
       file_name = subject.save_to_file
-
-
       expect(File.exist?(file_name)).to be_true
     end
   end
