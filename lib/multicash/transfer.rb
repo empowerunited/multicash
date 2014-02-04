@@ -78,7 +78,6 @@ module Multicash
 
     def payment_system
       @payment_system.is_a?(Array) ? "/#{@payment_system.join("/")}" : "/#{@payment_system}"
-
     end
 
     private
