@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Yordanov"]
-  s.date = "2014-02-03"
+  s.date = "2014-02-04"
   s.description = "Generate payment order under the multicash spec"
   s.email = "anton.yordnaov@gmail.com"
   s.extra_rdoc_files = [
