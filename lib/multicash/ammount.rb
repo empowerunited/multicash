@@ -4,7 +4,7 @@ module Multicash
     include ActiveModel::Validations
 
     CURRENCIES = %w{AUD BGN CAD CHF DKK EUR GBP JPY NOK RUR SEK TRL USD}
-    CURRENCY_FORMAT = /\A\d{1,11}.\d{2}\z/
+    CURRENCY_FORMAT = /\A\d{1,11}.\d{1,2}\z/
 
     attr_accessor :value, :currency
     attr_reader :errors
