@@ -3,14 +3,13 @@ module Multicash
     extend  ActiveModel::Naming
     include ActiveModel::Validations
 
-    attr_accessor :reference,  :transfers_number
-    attr_reader :transfers, :total_ammount, :currency, :ordering_bae, :date, :errors
+    attr_accessor :reference,  :transfers_number, :errors
+    attr_reader :transfers, :total_ammount, :currency, :ordering_bae, :date
 
     def initialize
       @currency = nil
       @date = Time.now.strftime('%y%m%d')
       @errors = ActiveModel::Errors.new(self)
-      @errors = []
       @ordering_bae = nil
       @transfers = []
       @total_ammount = 0.00
@@ -19,11 +18,12 @@ module Multicash
     def << (transfer)
       if transfer.valid?
         @transfers << transfer
+        transfer.reference_counter = @transfers.size
         @total_ammount += (transfer.ammount.to_f)
         @currency ||= transfer.currency
         @ordering_bae ||= transfer.ordering_bae
       else
-        errors.add("#{transfer.id}", transfer.errors.full_messages)
+        errors.add("#{transfer.reference_counter}", transfer.errors.full_messages)
       end
     end
 
@@ -53,11 +53,8 @@ module Multicash
 
     def body
       lines = []
-      transfers.reverse.each_with_index do |transfer|
-        if transfer.valid?
-          transfer.reference_counter += 1
-          lines << transfer.generate
-        end
+      transfers.each do |transfer|
+        lines << transfer.generate
       end
 
       lines.join("\x0C")

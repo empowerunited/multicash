@@ -13,7 +13,7 @@ module Multicash
     end
 
     def generate
-      return self.errors.full_messages unless self.valid
+      return self.errors.full_messages.to_sentence unless self.valid?
 
      "#{self.header}#{self.body}"
     end
