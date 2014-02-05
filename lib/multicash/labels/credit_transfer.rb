@@ -29,7 +29,7 @@ module Multicash
         value = ""
         value << transfer.today
         value << transfer.currency
-        value << print_currency_with_comma(transfer.ammount, -15)
+        value << print_currency_with_comma(transfer.ammount, -10)
 
         "#{label}#{print_string((value), -22)}"
       end
@@ -38,7 +38,7 @@ module Multicash
         label = ":50K:"
         value = "/"
         value << transfer.ordering_iban
-        value << "\n"
+        value << "\r\n"
         value << transfer.ordering_name
 
         "#{label}#{value}"
@@ -46,8 +46,8 @@ module Multicash
 
       def label_52D
         label = ":52D:"
-        value = print_string(transfer.ordering_bae, -35)
-        value << "\n"
+        value = transfer.ordering_bae
+        value << "\r\n"
         value << print_string(transfer.ordering_bank_name, -35)
 
         "#{label}#{value}"
@@ -55,8 +55,8 @@ module Multicash
 
       def label_57D
         label = ":57D:"
-        value = print_string(transfer.destination_bae, -35)
-        value << "\n"
+        value = transfer.destination_bae
+        value << "\r\n"
         value << print_string(transfer.destination_bank_name, -35)
 
         "#{label}#{value}"
@@ -66,7 +66,7 @@ module Multicash
         label = ":59:"
         value = '/'
         value << transfer.destination_iban
-        value << "\n"
+        value << "\r\n"
         value << print_string(transfer.destination_name, -35)
 
         "#{label}#{value}"
@@ -80,9 +80,10 @@ module Multicash
       end
 
       def label_70_footer
-        value = "\n/"
+        value = "/"
+        value << "\r\n"
         value << "/NTYPE/000000000000"
-        value << "\n/"
+        value << "\r\n"
         value << "/OPNAT/J"
 
         value
@@ -98,14 +99,14 @@ module Multicash
 
       def label_72
         label = ":72:"
-        value = print_string(transfer.payment_system, -35)
+        value = transfer.payment_system
 
         "#{label}#{value}"
       end
 
       def label_72_footer
         value = "/BAEREF/000000000000000000"
-        value << "\n/"
+        value << "\r\n"
         value << "/PROL/NORM"
       end
     end

@@ -34,8 +34,8 @@ module Multicash
       end
 
       def label_B1T
-        label = ":B1T:006"
-        value = ""
+        label = ":B1T:"
+        value = sprintf("%03d", payment_order.transfers.size)
         value << payment_order.currency
         value << print_currency_with_comma(payment_order.total_ammount.to_s, -9)
 

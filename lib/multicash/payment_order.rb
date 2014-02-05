@@ -48,7 +48,7 @@ module Multicash
       lines << payment_labels.label_77E
       lines << payment_labels.label_B1T
 
-      lines.join("\n") + "\n-}"
+      lines.join("\x0D\x0A") + "\x0D\x0A-}"
     end
 
     def body
@@ -70,7 +70,7 @@ module Multicash
       return false unless self.errors.blank?
 
       bank_file = File.join(Dir.tmpdir, "#{Time.now.strftime('%Y-%m-%d')}.txt")
-      File.open(bank_file, "w+", cr_newline: true, external_encoding: Encoding::CP1251) do |file|
+      File.open(bank_file, "w+", cr_newline: false, external_encoding: Encoding::CP1251) do |file|
         file.write generate.encode("CP1251")
       end
 

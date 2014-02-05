@@ -28,31 +28,31 @@ describe "Multicash::Labels::CreditTransfer" do
     let(:transfer_labels) { Multicash::Labels::CreditTransfer.new(credit_transfer) }
 
     specify "label_20" do
-      expect(transfer_labels.label_20.size).to eq(20) # + 4 for label
+      expect(transfer_labels.label_20.size).to eq(20)
     end
 
     specify "label_23B" do
-      expect(transfer_labels.label_23B.size).to eq(9)  # + 4 for label
+      expect(transfer_labels.label_23B.size).to eq(9)
     end
 
     specify "label_32A" do
-      expect(transfer_labels.label_32A.size).to eq(29)  # + 4 for label
+      expect(transfer_labels.label_32A.size).to eq(27)
     end
 
     specify "label_50K" do
-      expect(transfer_labels.label_50K.size).to eq(37)
+      expect(transfer_labels.label_50K.size).to eq(38)
     end
 
     specify "label_52D" do
-      expect(transfer_labels.label_52D.size).to eq(76)
+      expect(transfer_labels.label_52D.size).to eq(50)
     end
 
     specify "label_57D" do
-      expect(transfer_labels.label_57D.size).to eq(76)
+      expect(transfer_labels.label_57D.size).to eq(50)
     end
 
     specify "label_59" do
-      expect(transfer_labels.label_59.size).to eq(64) # 4 + 1 + 22 + 1 + 35
+      expect(transfer_labels.label_59.size).to eq(65)
     end
 
     specify "label_71A" do
@@ -60,7 +60,7 @@ describe "Multicash::Labels::CreditTransfer" do
     end
 
     specify "label_72" do
-      expect(transfer_labels.label_72.size).to eq(39)
+      expect(transfer_labels.label_72.size).to eq(5)
     end
   end
 end

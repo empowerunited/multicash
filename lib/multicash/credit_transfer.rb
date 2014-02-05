@@ -46,7 +46,7 @@ module Multicash
       lines << transfer_labels.label_72_footer
       lines << "-}"
 
-      lines.join("\n")
+      lines.join("\x0D\x0A")
     end
 
     def order_reference
