@@ -6,6 +6,8 @@ module Multicash
     attr_accessor :reference,  :transfers_number, :errors
     attr_reader :transfers, :total_ammount, :currency, :ordering_bae, :date
 
+    validate :valid_transfers
+
     def initialize
       @currency = nil
       @date = Time.now.strftime('%y%m%d')
@@ -16,15 +18,11 @@ module Multicash
     end
 
     def << (transfer)
-      if transfer.valid?
-        @transfers << transfer
-        transfer.reference_counter = @transfers.size
-        @total_ammount += (transfer.ammount.to_f)
-        @currency ||= transfer.currency
-        @ordering_bae ||= transfer.ordering_bae
-      else
-        errors.add("transfer - #{@transfers.size}", transfer.errors.full_messages)
-      end
+      @transfers << transfer
+      transfer.reference_counter = @transfers.size
+      @total_ammount += (transfer.ammount.to_f)
+      @currency ||= transfer.currency
+      @ordering_bae ||= transfer.ordering_bae
     end
 
     def header
@@ -75,6 +73,14 @@ module Multicash
       end
 
       bank_file
+    end
+
+    private
+
+    def valid_transfers
+      transfers.each_with_index do |transfer, index|
+        self.errors.add("transfer_#{index}", transfer.errors.full_messages) unless transfer.valid?
+      end
     end
   end
 end
