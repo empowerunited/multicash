@@ -50,7 +50,8 @@ module Multicash
     end
 
     def order_reference
-      "#{today}000000000#{reference_counter}"
+      counter = sprintf("%010d", reference_counter)
+      "#{today}#{counter}"
     end
   end
 end

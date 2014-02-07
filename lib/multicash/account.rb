@@ -12,6 +12,7 @@ module Multicash
     validates :address, presence: true, allow_blank: false
     validates :iban, presence: true, format: /\A[A-Z0-9]{2}\d{2}[A-Z0-9]{4}\d{4}[A-Z0-9]{10}\z/
 
+
     def initialize attributes = {}
       @name = attributes[:name]
       @city = attributes[:city] || "CITY"
