@@ -23,7 +23,7 @@ module Multicash
         @currency ||= transfer.currency
         @ordering_bae ||= transfer.ordering_bae
       else
-        errors.add("#{transfer.reference_counter}", transfer.errors.full_messages)
+        errors.add("transfer - #{@transfers.size}", transfer.errors.full_messages)
       end
     end
 
