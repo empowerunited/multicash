@@ -11,12 +11,12 @@ describe "Multicash::Transfer" do
   let(:destination_account) { Multicash::Account.new({ name: 'Jonh Doe',
     city: 'Destination City',
     address: 'Destination Address',
-    iban: 'BG11UBBS100210416158115',
+    iban: 'BG11UBBS10021041615811',
     bank_name: 'Destination Bank name'})
   }
 
   let(:ammount) { Multicash::Ammount.new(value: 222.12, currency: 'BGN') }
-  let(:payment) { Multicash::Payment.new( ammount: ammount, details: 'Details', charges: 'SHA') }
+  let(:payment) { Multicash::Payment.new( ammount, 'Details', 'SHA') }
 
   context "validations" do
     it "valid on valid initilization attributes" do

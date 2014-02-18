@@ -16,7 +16,7 @@ describe "Multicash::CreditTransfer" do
   }
 
   let(:ammount) { Multicash::Ammount.new(value: 222.12, currency: 'BGN') }
-  let(:payment) { Multicash::Payment.new( ammount: ammount, details: 'Details', charges: 'SHA') }
+  let(:payment) { Multicash::Payment.new( ammount, 'Details', 'SHA') }
 
   context "validations" do
     it "valid with correct message_id" do

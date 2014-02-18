@@ -16,7 +16,7 @@ describe "Multicash::PaymentOrder" do
   }
 
   let(:ammount) { Multicash::Ammount.new(value: 222.12, currency: 'BGN') }
-  let(:payment) { Multicash::Payment.new( ammount: ammount, details: 'Details', charges: 'SHA') }
+  let(:payment) { Multicash::Payment.new( ammount, 'Details', 'SHA') }
   let(:transfer) { Multicash::CreditTransfer.new(ordering_account: ordering_account,
     destination_account: destination_account,
     payment: payment,
