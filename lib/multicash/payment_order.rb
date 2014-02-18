@@ -64,12 +64,12 @@ module Multicash
       "#{header}#{body}"
     end
 
-    def save_to_file
+    def save_to_file encoding = "CP1251"
       return false unless self.errors.blank?
 
       bank_file = File.join(Dir.tmpdir, "#{Time.now.strftime('%Y-%m-%d')}.txt")
-      File.open(bank_file, "w+", cr_newline: false, external_encoding: Encoding::CP1251) do |file|
-        file.write generate.encode("CP1251")
+      File.open(bank_file, "w+", cr_newline: false, external_encoding: Kernel.const_get("Encoding::#{encoding}")) do |file|
+        file.write generate.encode(encoding)
       end
 
       bank_file
@@ -82,5 +82,6 @@ module Multicash
         self.errors.add("transfer_#{index}", transfer.errors.full_messages) unless transfer.valid?
       end
     end
+
   end
 end
