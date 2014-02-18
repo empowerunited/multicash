@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "multicash"
-  gem.homepage = "http://github.com/anotin-yordanov/multicash"
+  gem.homepage = "http://github.com/anton-yordanov/multicash"
   gem.license = "MIT"
   gem.summary = %Q{Generate payment order under the multicash spec}
   gem.description = %Q{Generate payment order under the multicash spec}
