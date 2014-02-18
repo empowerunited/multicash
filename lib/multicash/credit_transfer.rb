@@ -29,7 +29,7 @@ module Multicash
     end
 
     def body
-      transfer_labels = Multicash::TransferLabelsBuilder.build(self)
+      transfer_labels = Multicash::Transfer::LabelsBuilder.build(self)
       lines = []
       lines << "{4:"
       lines << transfer_labels.label_20
@@ -47,11 +47,6 @@ module Multicash
       lines << "-}"
 
       lines.join("\x0D\x0A")
-    end
-
-    def order_reference
-      counter = sprintf("%010d", reference_counter)
-      "#{today}#{counter}"
     end
   end
 end

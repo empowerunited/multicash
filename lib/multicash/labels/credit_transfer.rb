@@ -7,11 +7,13 @@ module Multicash
 
       def initialize transfer
         @transfer = transfer
+        @transfer.extend Multicash::Transfer::Helpers
       end
 
       def label_20
         label = ":20:"
-        value = sprintf("%010d", transfer.order_reference)
+        value = transfer.today
+        value << sprintf("%010d", transfer.reference_counter)
 
         "#{label}#{value}"
       end
