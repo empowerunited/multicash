@@ -10,6 +10,36 @@ module Multicash
         @transfer.extend Multicash::Transfer::Helpers
       end
 
+      def header
+        line = "{1:F01"
+        line << transfer.destination_bae
+        line << "XXXX0000000000}"
+        line << "{2:I103"
+        line << transfer.ordering_bae
+        line << "XXXXN0000}"
+        line
+      end
+
+      def body
+        lines = []
+        lines << "{4:"
+        lines << label_20
+        lines << label_23B
+        lines << label_32A
+        lines << label_50K
+        lines << label_52D
+        lines << label_57D
+        lines << label_59
+        lines << label_70
+        lines << label_70_footer
+        lines << label_71A
+        lines << label_72
+        lines << label_72_footer
+        lines << "-}"
+
+        lines.join("\x0D\x0A")
+      end
+
       def label_20
         label = ":20:"
         value = transfer.today

@@ -40,7 +40,7 @@ describe "Multicash::CreditTransfer" do
         payment: payment,
         payment_system: 'BISER')
 
-      expect(transfer.header.size).to eq(54)
+      puts transfer.generate
     end
 
     it "correct extended body" do
@@ -49,7 +49,6 @@ describe "Multicash::CreditTransfer" do
         payment: payment,
         payment_system: 'BISER')
 
-      transfer.header + transfer.body
     end
   end
 end
