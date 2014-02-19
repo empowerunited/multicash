@@ -16,7 +16,7 @@ describe "Multicash::Account" do
     end
 
     it "not be valid if required attributes are missing" do
-      account_attributes[:iban] = "BG93STSA93000021529797"
+      account_attributes[:iban] = "BG93STSA9300002152979777"
       expect(Multicash::Account.new(account_attributes)).to_not be_valid
     end
   end

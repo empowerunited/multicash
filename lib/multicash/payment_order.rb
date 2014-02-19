@@ -19,10 +19,14 @@ module Multicash
 
     def << (transfer)
       @transfers << transfer
+
+      transfer_payment = transfer.payment
+      ordering_account = transfer.ordering_account
       transfer.reference_counter = @transfers.size
-      @total_ammount += (transfer.ammount.to_f)
-      @currency ||= transfer.currency
-      @ordering_bae ||= transfer.ordering_bae
+
+      @total_ammount += (transfer_payment.ammount_value.to_f)
+      @currency ||= transfer_payment.ammount_currency
+      @ordering_bae ||= ordering_account.bae
     end
 
     def header

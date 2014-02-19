@@ -20,10 +20,10 @@ module Multicash
 
     def header
       line = "{1:F01"
-      line << self.ordering_bae
+      line << self.ordering_account.bae
       line << "XXXX0000000000}"
       line << "{2:I103"
-      line << self.destination_bae
+      line << self.destination_account.bae
       line << "XXXXN0000}"
       line
     end
